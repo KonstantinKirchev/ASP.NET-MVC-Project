@@ -14,7 +14,5 @@ namespace PhotoContests.App.Models.ViewModels
         public DateTime DateCreated { get; set; }
 
         public string Owner { get; set; }
-
-        // TODO 
     }
 }
