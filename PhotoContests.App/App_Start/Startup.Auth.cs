@@ -56,14 +56,14 @@ namespace PhotoContests.App
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "854178244678321",
+               appSecret: "9ece14d72e95d56fd25466b4125c3007");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "168581980618-fmt6u65hlgf8dbuk73vo1uvift1rams4.apps.googleusercontent.com",
-                ClientSecret = "-Sl9ttUyvdlS720J_4zACJN0"
+                ClientId = "647509866233-b4945tetk0nt21e4oei6ajl3ji47656o.apps.googleusercontent.com",
+                ClientSecret = "zpmd5vnkr94A3pnd_Hr76qia"
             });
         }
     }

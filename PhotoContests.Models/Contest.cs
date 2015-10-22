@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhotoContests.Models
@@ -23,8 +24,11 @@ namespace PhotoContests.Models
             this.prizes = new HashSet<Prize>();
         }
 
+        [Key]
         public int Id { get; set; }
 
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -41,6 +45,7 @@ namespace PhotoContests.Models
 
         public DeadlineStrategy DeadlineStrategy { get; set; }
 
+        [Required]
         public string ContestOwnerId { get; set; }
 
         public virtual User ContestOwner { get; set; }

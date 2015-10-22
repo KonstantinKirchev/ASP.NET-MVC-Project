@@ -28,7 +28,11 @@
                         {
                             <li>@Html.ActionLink("Admin", "Index", "HomeAdmin", routeValues: new { area = "Admin" }, htmlAttributes: null)</li>
                         }
-                    }                   
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("My contests", "Index", "Contests", routeValues: new { area = "" }, htmlAttributes: null)</li>
+                        }
+}                   
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
