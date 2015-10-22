@@ -1,0 +1,17 @@
+﻿@using System.Globalization
+@model PhotoContests.App.Models.ViewModels.ContestViewModel
+
+
+    <div class="col-md-4">
+        <h2>
+            @Html.ActionLink(
+                Model.Title,
+                "Details",
+                "Contests",
+                routeValues: new {id = Model.Id},
+                htmlAttributes: null)
+        </h2>
+        <p>@Model.Description</p>
+        by @(Model.Owner) on @Model.DateCreated.ToString("dd.MMMM.yyyy", CultureInfo.InvariantCulture)
+    </div>
+

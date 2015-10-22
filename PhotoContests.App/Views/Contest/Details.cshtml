@@ -1,0 +1,32 @@
+﻿@model PhotoContests.App.Models.ViewModels.ContestDetailViewModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>@Model.Title</h2>
+@{
+    {
+        for (int i = 0; i < Model.Pictures.Count(); i++)
+        {
+            if (i % 3 == 0)
+            {
+                @:<div class="row">
+            }
+
+            var picture = Model.Pictures.Skip(i).FirstOrDefault();
+            <div class="col-md-4">
+                <img src="@picture.PictureUrl" alt="" />
+            </div>
+            if (i % 3 == 2)
+            {
+                @:</div>
+            }
+        }
+    }
+    @*foreach (var picture in Model.Pictures)
+    {
+        <img src="@picture.PictureUrl" alt=""/>
+        <p>Votes: @picture.VoteCount</p>
+    }*@
+}

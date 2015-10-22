@@ -45,6 +45,10 @@ namespace PhotoContests.Models
 
         public DeadlineStrategy DeadlineStrategy { get; set; }
 
+        public int? Winners { get; set; }
+
+        public int? MaxParticipants { get; set; }
+
         [Required]
         public string ContestOwnerId { get; set; }
 
