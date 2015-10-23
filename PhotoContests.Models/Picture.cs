@@ -6,10 +6,12 @@ namespace PhotoContests.Models
     public class Picture
     {
         private ICollection<User> voters;
+        private ICollection<Comment> comments;
 
         public Picture()
         {
             this.voters = new HashSet<User>();
+            this.comments = new HashSet<Comment>();
         }
 
         [Key]
@@ -33,6 +35,12 @@ namespace PhotoContests.Models
         {
             get { return this.voters; }
             set { this.voters = value; }
-        } 
+        }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
+        }
     }
 }
