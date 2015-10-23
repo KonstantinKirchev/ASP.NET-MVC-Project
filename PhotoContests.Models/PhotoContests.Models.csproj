@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comment.cs" />
     <Compile Include="Contest.cs" />
     <Compile Include="DeadlineStrategy.cs" />
     <Compile Include="ParticipationStrategy.cs" />

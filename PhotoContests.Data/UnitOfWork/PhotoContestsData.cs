@@ -52,6 +52,11 @@ namespace PhotoContests.Data.UnitOfWork
             }
         }
 
+        public IRepository<Comment> Comments
+        {
+            get { return this.GetRepository<Comment>(); }
+        }
+
         public IUserStore<User> UserStore
         {
             get

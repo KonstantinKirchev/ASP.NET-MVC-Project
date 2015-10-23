@@ -11,7 +11,9 @@ namespace PhotoContests.Data.UnitOfWork
 
         IRepository<Picture> Pictures { get; }
 
-        IRepository<Prize> Prizes { get; } 
+        IRepository<Prize> Prizes { get; }
+
+        IRepository<Comment> Comments { get; } 
 
         void SaveChanges();
     }

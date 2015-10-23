@@ -17,6 +17,7 @@ namespace PhotoContests.Models
         private ICollection<Contest> contestsForParticipation;
         private ICollection<Picture> pictures;
         private ICollection<Prize> prizes;
+        private ICollection<Comment> comments; 
 
         public User()
         {
@@ -26,6 +27,7 @@ namespace PhotoContests.Models
             this.contestsForParticipation = new HashSet<Contest>();
             this.pictures = new HashSet<Picture>();
             this.prizes = new HashSet<Prize>();
+            this.comments = new HashSet<Comment>();
         }
 
         public string FirstName { get; set; }
@@ -71,6 +73,12 @@ namespace PhotoContests.Models
         {
             get { return this.prizes; }
             set { this.prizes = value; }
+        }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

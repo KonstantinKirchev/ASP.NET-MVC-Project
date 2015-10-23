@@ -19,6 +19,8 @@ namespace PhotoContests.Data
 
         public virtual IDbSet<Prize> Prizes { get; set; }
 
+        public virtual IDbSet<Comment> Comments { get; set; }
+
         public static PhotoContestsDbContext Create()
         {
             return new PhotoContestsDbContext();
