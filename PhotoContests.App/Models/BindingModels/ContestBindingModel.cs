@@ -12,8 +12,6 @@ namespace PhotoContests.App.Models.BindingModels
 
         public string Description { get; set; }
 
-        public DateTime? DateEnded { get; set; }
-
         public RewardStrategy RewardStrategy { get; set; }
 
         public VotingStrategy VotingStrategy { get; set; }

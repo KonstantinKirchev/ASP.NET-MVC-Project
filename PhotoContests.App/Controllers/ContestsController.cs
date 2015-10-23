@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using PhotoContests.App.Models.BindingModels;
 using PhotoContests.App.Models.ViewModels;
-using PhotoContests.Data;
 using PhotoContests.Data.UnitOfWork;
 using PhotoContests.Models;
 
@@ -40,6 +36,18 @@ namespace PhotoContests.App.Controllers
             return View(contestModels);
         }
 
+        // GET: Contests
+        public ActionResult ClosedContests()
+        {
+            var userId = User.Identity.GetUserId();
+            var contests = this.Data.Contests.All()
+                .OrderByDescending(c => c.DateCreated)
+                .Where(c => c.IsClosed == true && c.ContestOwner.Id == userId);
+
+            var contestModels = Mapper.Map<IEnumerable<Contest>, IEnumerable<ContestViewModel>>(contests);
+            return View(contestModels);
+        }
+
         // GET: Contests/Details/5
         public ActionResult Details(int? id)
         {
@@ -59,6 +67,25 @@ namespace PhotoContests.App.Controllers
         }
 
         // GET: Contests/Create
+        public ActionResult TempCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TempCreate(ContestBindingModel model)
+        {
+            this.Session["Title"] = model.Title;
+            this.Session["Description"] = model.Description;
+            this.Session["RewardStrategy"] = model.RewardStrategy;
+            this.Session["VotingStrategy"] = model.VotingStrategy;
+            this.Session["ParticipationStrategy"] = model.ParticipationStrategy;
+            this.Session["DeadlineStrategy"] = model.DeadlineStrategy;
+            return RedirectToAction("Create");
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -67,24 +94,33 @@ namespace PhotoContests.App.Controllers
         // POST: Contests/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ContestBindingModel model)
+        public ActionResult Create(ContestFinalBindingModel model)
         {
             if (ModelState.IsValid)
             {
                 var userId = User.Identity.GetUserId();
                 var user = this.Data.Users.All().FirstOrDefault(u => u.Id == userId);
 
+                string title = this.Session["Title"].ToString();
+                string description = this.Session["Description"].ToString();
+                string rewardStrategy = this.Session["RewardStrategy"].ToString();
+                string votingStrategy = this.Session["VotingStrategy"].ToString();
+                string participationStrategy = this.Session["ParticipationStrategy"].ToString();
+                string deadlineStrategy = this.Session["DeadlineStrategy"].ToString();
+
                 var contest = new Contest()
                 {
-                    Title = model.Title,
-                    Description = model.Description,
+                    Title = title,
+                    Description = description,
                     DateCreated = DateTime.Now,
                     DateEnded = model.DateEnded,
-                    RewardStrategy = model.RewardStrategy,
-                    VotingStrategy = model.VotingStrategy,
-                    ParticipationStrategy = model.ParticipationStrategy,
-                    DeadlineStrategy = model.DeadlineStrategy,
-                    ContestOwnerId = userId
+                    RewardStrategy = rewardStrategy == RewardStrategy.SingleUser.ToString() ? RewardStrategy.SingleUser : RewardStrategy.TopNUsers,
+                    VotingStrategy = votingStrategy == VotingStrategy.Open.ToString() ? VotingStrategy.Open : VotingStrategy.Closed,
+                    ParticipationStrategy = participationStrategy == ParticipationStrategy.Open.ToString() ? ParticipationStrategy.Open : ParticipationStrategy.Closed,
+                    DeadlineStrategy = deadlineStrategy == DeadlineStrategy.ByTime.ToString() ? DeadlineStrategy.ByTime : DeadlineStrategy.ByNumberOfParticipants,
+                    ContestOwnerId = userId,
+                    Winners = model.WinnersCount != null ? model.WinnersCount : null,
+                    MaxParticipants = model.NumberOfParticipation != null ? model.NumberOfParticipation : null
                 };
 
                 this.Data.Contests.Add(contest);

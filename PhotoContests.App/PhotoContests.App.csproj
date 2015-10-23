@@ -220,6 +220,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BindingModels\ContestBindingModel.cs" />
+    <Compile Include="Models\BindingModels\ContestFinalBindingModel.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ViewModels\ContestDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\ContestViewModel.cs" />
@@ -305,6 +306,8 @@
     <Content Include="Views\Contests\Details.cshtml" />
     <Content Include="Views\Contests\Edit.cshtml" />
     <Content Include="Views\Contests\Index.cshtml" />
+    <Content Include="Views\Contests\TempCreate.cshtml" />
+    <None Include="Views\Contests\ClosedContests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

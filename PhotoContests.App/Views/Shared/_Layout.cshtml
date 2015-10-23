@@ -30,7 +30,18 @@
                         }
                         if (User.Identity.IsAuthenticated)
                         {
-                            <li>@Html.ActionLink("My contests", "Index", "Contests", routeValues: new { area = "" }, htmlAttributes: null)</li>
+                            <li>
+                                <div class="dropdown">
+                                    <button class="btn btn-toggle dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                                        My contests
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/Contests/Index">Active contests</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="/Contests/ClosedContests">Closed contests</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         }
 }                   
                 </ul>
