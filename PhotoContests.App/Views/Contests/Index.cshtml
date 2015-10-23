@@ -21,9 +21,6 @@
             @Html.DisplayNameFor(model => model.DateCreated)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateEnded)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Owner)
         </th>
         <th>Options</th>
@@ -45,15 +42,12 @@
             @Html.DisplayFor(modelItem => item.DateCreated)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateEnded)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Owner)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Dismiss", "Dismiss", new { id=item.Id })
         </td>
     </tr>
 }

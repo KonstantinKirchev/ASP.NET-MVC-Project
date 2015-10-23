@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using Microsoft.AspNet.Identity 
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +43,8 @@
                                 </div>
                             </li>
                         }
-}                   
+                    }
+                    <li>@Html.ActionLink("Past Contests", "ClosedContests", "Contests")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -90,7 +90,7 @@ namespace PhotoContests.App.Controllers
         {
             return View();
         }
-
+        
         // POST: Contests/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -163,7 +163,7 @@ namespace PhotoContests.App.Controllers
         }
 
         // GET: Contests/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Dismiss(int? id)
         {
             if (id == null)
             {
@@ -174,6 +174,35 @@ namespace PhotoContests.App.Controllers
             {
                 return HttpNotFound();
             }
+ 
+            return View(contest);
+        }
+
+        // POST: Contests/Delete/5
+        [HttpPost, ActionName("Dismiss")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DismissConfirmed(int id)
+        {
+            var contest = this.Data.Contests.Find(id);
+            contest.IsClosed = true;
+            contest.DateEnded = DateTime.Now;
+            this.Data.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        // GET: Contests/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var contest = this.Data.Contests.Find(id);
+            if (contest == null)
+            {
+                return HttpNotFound();
+            }
+
             return View(contest);
         }
 
@@ -182,11 +211,11 @@ namespace PhotoContests.App.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Contest contest = this.Data.Contests.Find(id);
+            var contest = this.Data.Contests.Find(id);
             this.Data.Contests.Remove(contest);
             this.Data.SaveChanges();
             return RedirectToAction("Index");
         }
-        
+
     }
 }

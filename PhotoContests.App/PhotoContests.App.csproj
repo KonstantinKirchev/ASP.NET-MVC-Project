@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -302,12 +303,13 @@
     <Content Include="Views\Shared\DisplayTemplates\ContestViewModel.cshtml" />
     <Content Include="Views\Contest\Details.cshtml" />
     <Content Include="Views\Contests\Create.cshtml" />
-    <Content Include="Views\Contests\Delete.cshtml" />
+    <Content Include="Views\Contests\Dismiss.cshtml" />
     <Content Include="Views\Contests\Details.cshtml" />
     <Content Include="Views\Contests\Edit.cshtml" />
     <Content Include="Views\Contests\Index.cshtml" />
     <Content Include="Views\Contests\TempCreate.cshtml" />
     <None Include="Views\Contests\ClosedContests.cshtml" />
+    <Content Include="Views\Contests\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
