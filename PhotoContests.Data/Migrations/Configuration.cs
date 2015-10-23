@@ -10,5 +10,10 @@ namespace PhotoContests.Data.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
             ContextKey = "PhotoContests.Data.PhotoContestsDbContext";
         }
+
+        protected override void Seed(PhotoContestsDbContext context)
+        {
+            
+        }
     }
 }
