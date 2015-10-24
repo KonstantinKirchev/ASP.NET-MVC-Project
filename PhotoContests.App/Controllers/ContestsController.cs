@@ -156,15 +156,25 @@ namespace PhotoContests.App.Controllers
         // GET: Contests/Edit/5
         public ActionResult Edit(int? id)
         {
+            var userId = this.User.Identity.GetUserId();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Contest contest = this.Data.Contests.Find(id);
+
             if (contest == null)
             {
                 return HttpNotFound();
             }
+
+            if (userId != contest.ContestOwner.Id)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.ContestOwnerId = new SelectList(this.Data.Users.All(), "Id", "FirstName", contest.ContestOwnerId);
             return View(contest);
         }
@@ -187,6 +197,7 @@ namespace PhotoContests.App.Controllers
         // GET: Contests/Dismiss/5
         public ActionResult Dismiss(int? id)
         {
+            var userId = this.User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -195,6 +206,10 @@ namespace PhotoContests.App.Controllers
             if (contest == null)
             {
                 return HttpNotFound();
+            }
+            if (userId != contest.ContestOwner.Id)
+            {
+                return RedirectToAction("Index","Home");
             }
  
             return View(contest);

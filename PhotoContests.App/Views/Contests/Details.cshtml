@@ -169,6 +169,13 @@
 }
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+            @:|
+        }
+        
+    }
+    @Html.ActionLink("Back to List", "Index", "Home")
 </p>
