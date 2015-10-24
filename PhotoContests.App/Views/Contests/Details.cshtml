@@ -6,49 +6,8 @@
 
 <h2>@Model.Title</h2>
 
-@{
-    {
-        for (int i = 0; i < Model.Pictures.Count(); i++)
-        {
-            if (i%3 == 0)
-            {
-                @:<div class="row">
-            }
+@Html.Partial("~/Views/Pictures/_ShowPictures.cshtml", Model.Pictures)
 
-            var picture = Model.Pictures.Skip(i).FirstOrDefault();
-            
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <img src="@picture.PictureUrl" alt="">
-                        <div class="caption">
-                            <h3>@Model.Title</h3>
-                            <p>@Model.Description</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Vote</a></p>
-                        </div>
-                    </div>
-                </div>
-            @*<div class="col-md-4">
-                <img src="@picture.PictureUrl" alt=""/>
-                <p>@Model.Title</p>
-                <div class="container">
-                    <div class="alert alert-success pull-right hide">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        You gave a rating of <span id="count">0</span> star(s)
-                    </div>
-                    <div class="row lead">
-                        <div id="stars" class="starrr"></div>
-                    </div>
-                </div>
-            </div>*@
-            
-            if (i % 3 == 2)
-            {
-                @:</div>
-            }
-            
-        }
-    }
-}
 @section scripts{
     <script>
         $(".alert").addClass("in").fadeOut(3500);

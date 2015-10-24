@@ -1,0 +1,12 @@
+﻿@using PhotoContests.App.Models.ViewModels
+@model ICollection<CommentViewModel>
+
+
+<div class="caption">
+    @foreach (var comment in Model)
+    {
+        @Html.Partial("~/Views/Comments/_ShowComment.cshtml", comment)
+    }
+    <textarea ng-model="content" rows="3" cols="40"></textarea>
+    <a class="btn btn-primary" ng-click="addComment(trip.Id, content)" role="button">Comment</a>
+</div>

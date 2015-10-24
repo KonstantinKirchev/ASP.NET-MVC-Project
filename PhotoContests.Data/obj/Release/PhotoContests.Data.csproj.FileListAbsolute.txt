@@ -1,0 +1,32 @@
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\PhotoContests.Data.dll.config
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\PhotoContests.Data.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\PhotoContests.Data.pdb
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\EntityFramework.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\PhotoContests.Models.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\PhotoContests.Models.pdb
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\EntityFramework.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\obj\Release\PhotoContests.Data.csprojResolveAssemblyReference.cache
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\obj\Release\PhotoContests.Data.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\obj\Release\PhotoContests.Data.pdb
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\PhotoContests.Data.dll.config
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\PhotoContests.Data.dll
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\PhotoContests.Data.pdb
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\EntityFramework.dll
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\EntityFramework.SqlServer.dll
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.Core.dll
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\PhotoContests.Models.dll
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\PhotoContests.Models.pdb
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\EntityFramework.xml
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\EntityFramework.SqlServer.xml
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.Core.xml
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\obj\Release\PhotoContests.Data.csprojResolveAssemblyReference.cache
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\obj\Release\PhotoContests.Data.dll
+D:\Evgeni\programirane\saitove\SoftUni\Courses\Back-End Level\05. ASP.NET MVC\Teamwork\PhotoContests.Data\obj\Release\PhotoContests.Data.pdb

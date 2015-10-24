@@ -13,12 +13,15 @@ namespace PhotoContests.Models
         [Key]
         public int Id { get; set; }
 
+        [Required]
         public string Content { get; set; }
 
+        [Required]
         public string AuthorId { get; set; }
 
         public virtual User Author { get; set; }
 
+        [Required]
         public int PictureId { get; set; }
 
         public virtual Picture Picture { get; set; }
