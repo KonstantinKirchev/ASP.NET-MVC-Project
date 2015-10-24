@@ -234,6 +234,7 @@
     <Compile Include="Models\BindingModels\ContestBindingModel.cs" />
     <Compile Include="Models\BindingModels\ContestFinalBindingModel.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\ViewModels\CommentViewModel.cs" />
     <Compile Include="Models\ViewModels\ContestDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\ContestViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
@@ -321,15 +322,18 @@
     <Content Include="Views\Contests\Edit.cshtml" />
     <Content Include="Views\Contests\Index.cshtml" />
     <Content Include="Views\Contests\TempCreate.cshtml" />
+    <Content Include="Views\Comments\_ShowComments.cshtml" />
+    <Content Include="Views\Comments\_ShowComment.cshtml" />
     <None Include="Views\Contests\ClosedContests.cshtml" />
     <Content Include="Views\Contests\Delete.cshtml" />
     <Content Include="Views\Contests\PastContests.cshtml" />
     <Content Include="Views\Contests\Finalize.cshtml" />
+    <Content Include="Views\Pictures\_ShowPictures.cshtml" />
+    <Content Include="Views\Pictures\_ShowPicture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

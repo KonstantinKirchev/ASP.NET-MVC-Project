@@ -11,5 +11,9 @@ namespace PhotoContests.App.Models.ViewModels
         public int VoteCount { get; set; }
 
         public string Owner { get; set; }
+
+        public ICollection<CommentViewModel> Comments { get; set; }
+
+        public int CommentsCount { get; set; }
     }
 }

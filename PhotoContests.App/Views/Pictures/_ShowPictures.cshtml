@@ -1,0 +1,37 @@
+﻿@model ICollection<PhotoContests.App.Models.ViewModels.PictureViewModel>
+
+@{
+    {
+        for (int i = 0; i < Model.Count(); i++)
+        {
+            if (i % 3 == 0)
+            {
+                @:<div class="row">
+            }
+
+            var picture = Model.Skip(i).FirstOrDefault();
+
+            @Html.Partial("~/Views/Pictures/_ShowPicture.cshtml", picture)
+    
+            @*<div class="col-md-4">
+                    <img src="@picture.PictureUrl" alt=""/>
+                    <p>@Model.Title</p>
+                    <div class="container">
+                        <div class="alert alert-success pull-right hide">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            You gave a rating of <span id="count">0</span> star(s)
+                        </div>
+                        <div class="row lead">
+                            <div id="stars" class="starrr"></div>
+                        </div>
+                    </div>
+                </div>*@
+
+            if (i % 3 == 2)
+            {
+                @:</div>
+            }
+
+        }
+    }
+}
