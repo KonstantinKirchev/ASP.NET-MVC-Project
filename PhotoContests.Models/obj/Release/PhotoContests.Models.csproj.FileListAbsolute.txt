@@ -1,0 +1,14 @@
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\PhotoContests.Models.dll.config
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\PhotoContests.Models.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\PhotoContests.Models.pdb
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\EntityFramework.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\EntityFramework.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\obj\Release\PhotoContests.Models.csprojResolveAssemblyReference.cache
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\obj\Release\PhotoContests.Models.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Models\obj\Release\PhotoContests.Models.pdb

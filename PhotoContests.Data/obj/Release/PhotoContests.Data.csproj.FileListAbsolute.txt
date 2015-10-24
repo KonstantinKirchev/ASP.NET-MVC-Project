@@ -1,0 +1,16 @@
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\PhotoContests.Data.dll.config
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\PhotoContests.Data.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\PhotoContests.Data.pdb
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\EntityFramework.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\PhotoContests.Models.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\PhotoContests.Models.pdb
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\EntityFramework.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\obj\Release\PhotoContests.Data.csprojResolveAssemblyReference.cache
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\obj\Release\PhotoContests.Data.dll
+C:\Users\Konstantin\Desktop\Software University\ASP.NET MVC\TeamWork\trunk\PhotoContests.Data\obj\Release\PhotoContests.Data.pdb
