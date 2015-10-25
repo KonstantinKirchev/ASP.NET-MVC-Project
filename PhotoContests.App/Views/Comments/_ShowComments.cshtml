@@ -2,11 +2,15 @@
 @model ICollection<CommentViewModel>
 
 
-<div class="caption">
+<div class="caption well">
     @foreach (var comment in Model)
     {
         @Html.Partial("~/Views/Comments/_ShowComment.cshtml", comment)
     }
-    <textarea ng-model="content" rows="3" cols="40"></textarea>
-    <a class="btn btn-primary" ng-click="addComment(trip.Id, content)" role="button">Comment</a>
+    <div class="list-group">
+        <div class="list-group-item">
+            <textarea ng-model="content" rows="3" cols="40"></textarea>
+            <a class="btn btn-primary" ng-click="addComment(trip.Id, content)" role="button">Comment</a>
+        </div>
+    </div>
 </div>

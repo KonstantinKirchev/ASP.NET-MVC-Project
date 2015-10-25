@@ -1,5 +1,15 @@
 ﻿@using PhotoContests.App.Models.ViewModels
 @model CommentViewModel
-<div>
-    @Model.Content
+
+<div class="list-group">
+    <div class="list-group-item">
+        <p>
+            [Comment number.] [By: @Model.Author] [@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm:ss")]
+        </p>
+        <blockquote>
+            <p>
+                @Model.Content
+            </p>
+        </blockquote>
+    </div>
 </div>
