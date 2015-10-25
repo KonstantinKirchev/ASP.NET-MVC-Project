@@ -10,7 +10,9 @@
                 <a href="#" class="btn btn-primary" role="button">Vote <span class="badge">@Model.VoteCount</span></a>
                 <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-target="#commentsCollapse@(Model.Id)">Comments <span class="badge ng-binding">@Model.CommentsCount</span></button>
             </p>
-            @Html.Partial("~/Views/Comments/_ShowComments.cshtml", Model.Comments)
+            <div class="collapse" id="commentsCollapse@(Model.Id)">
+                @Html.Partial("~/Views/Comments/_ShowComments.cshtml", Model.Comments)
+            </div>
         </div>
     </div>
 </div>
