@@ -2,7 +2,9 @@
 
 <div class="col-md-4">
     <div class="thumbnail">
-        <img src="@Model.PictureUrl" alt="" class="img-responsive">
+        <a href="@Model.PictureUrl" alt="" class="img-responsive" data-lightbox="image-1" data-title="@Model.Owner">
+            <img src="@Model.PictureUrl" alt="" />
+        </a>
         <div class="caption">
             <h3>Picture Title to be implemented</h3>
             <p>Picture Description to be implemented</p>

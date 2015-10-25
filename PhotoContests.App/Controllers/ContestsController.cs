@@ -99,6 +99,7 @@ namespace PhotoContests.App.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+          
             var currentUser = User.Identity.GetUserName();
             var users = this.Data.Users.All()
                 .Where(u => u.UserName != currentUser)
