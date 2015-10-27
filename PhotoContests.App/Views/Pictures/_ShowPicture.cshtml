@@ -1,6 +1,6 @@
 ﻿@model PhotoContests.App.Models.ViewModels.PictureViewModel
 
-<div class="col-md-4">
+<div class="col-md-4 picture" data-id="@(Model.Id)">
     <div class="thumbnail">
         <a href="@Model.PictureUrl" alt="" class="img-responsive" data-lightbox="image-1" data-title="@Model.Owner">
             <img src="@Model.PictureUrl" alt="" />
@@ -10,7 +10,7 @@
             <p>Picture Description to be implemented</p>
             <p>
                 <a href="#" class="btn btn-primary" role="button">Vote <span class="badge">@Model.VoteCount</span></a>
-                <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-target="#commentsCollapse@(Model.Id)">Comments <span class="badge ng-binding">@Model.CommentsCount</span></button>
+                <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-target="#commentsCollapse@(Model.Id)">Comments <span class="badge ng-binding commentsCount">@Model.CommentsCount</span></button>
             </p>
             <div class="collapse" id="commentsCollapse@(Model.Id)">
                 @Html.Partial("~/Views/Comments/_ShowComments.cshtml", Model.Comments)

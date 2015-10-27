@@ -2,15 +2,24 @@
 @model ICollection<CommentViewModel>
 
 
-<div class="caption well">
+<div class="caption well comments">
     @foreach (var comment in Model)
     {
         @Html.Partial("~/Views/Comments/_ShowComment.cshtml", comment)
     }
     <div class="list-group">
         <div class="list-group-item">
-            <textarea ng-model="content" rows="3" cols="40"></textarea>
-            <a class="btn btn-primary" ng-click="addComment(trip.Id, content)" role="button">Comment</a>
+            
+            @using (Ajax.BeginForm("Create", "Comments", new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "AjaxClearForm"
+            }))
+            {
+                <textarea name="Content" rows="3" cols="40"></textarea>
+                <input type="hidden" name="PictureId" class="commentPictureId"/>
+                <button class="btn btn-primary">Comment</button>
+            }
         </div>
     </div>
 </div>

@@ -1,13 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.SignalR;
+using PhotoContests.App.Hubs;
 using PhotoContests.App.Models.ViewModels;
 using PhotoContests.Data.UnitOfWork;
 using PhotoContests.Models;
 
 namespace PhotoContests.App.Controllers
 {
+    [System.Web.Mvc.Authorize]
     public class CommentsController : BaseController
     {
         public CommentsController(IPhotoContestsData data)
@@ -20,6 +25,7 @@ namespace PhotoContests.App.Controllers
         {
         }
 
+        [AllowAnonymous]
         // GET: Comment
         public ActionResult Index()
         {
@@ -30,8 +36,23 @@ namespace PhotoContests.App.Controllers
             return Json(commentsModel, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Create()
+        [HttpPost]
+        public ActionResult Create(CommentViewModel commentViewModel)
         {
+            var comment = new Comment()
+            {
+                AuthorId = this.User.Identity.GetUserId(),
+                Content = commentViewModel.Content,
+                CreatedAt = DateTime.Now,
+                PictureId = commentViewModel.PictureId
+            };
+
+            this.Data.Comments.Add(comment);
+
+            if (this.Data.SaveChanges() > 0)
+            {
+                this.SendCommentWithSignalR(comment.Id);
+            }
             return Content("Create");
         }
 
@@ -48,6 +69,14 @@ namespace PhotoContests.App.Controllers
         public ActionResult Delete()
         {
             return Content("Delete");
+        }
+        private void SendCommentWithSignalR(int commentId)
+        {
+            var comment = this.Data.Comments.Find(commentId);
+            var commentViewModel = Mapper.Map<Comment, CommentViewModel>(comment);
+
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<CommentsHub>();
+            hubContext.Clients.All.receiveComment(commentViewModel);
         }
     }
 }

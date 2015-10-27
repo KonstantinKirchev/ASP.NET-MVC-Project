@@ -15,7 +15,7 @@ namespace PhotoContests.App.Models.ViewModels
 
         public string Content { get; set; }
 
-        public string PictureId { get; set; }
+        public int PictureId { get; set; }
 
         public DateTime CreatedAt { get; set; }
     }

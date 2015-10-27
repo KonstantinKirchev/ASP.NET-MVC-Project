@@ -15,6 +15,6 @@ namespace PhotoContests.Data.UnitOfWork
 
         IRepository<Comment> Comments { get; } 
 
-        void SaveChanges();
+        int SaveChanges();
     }
 }
