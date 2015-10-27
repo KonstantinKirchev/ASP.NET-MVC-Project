@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.SignalR;
+using PhotoContests.App.Filters;
 using PhotoContests.App.Hubs;
 using PhotoContests.App.Models.ViewModels;
 using PhotoContests.Data.UnitOfWork;
@@ -12,7 +13,6 @@ using PhotoContests.Models;
 
 namespace PhotoContests.App.Controllers
 {
-    [System.Web.Mvc.Authorize]
     public class CommentsController : BaseController
     {
         public CommentsController(IPhotoContestsData data)
@@ -25,7 +25,6 @@ namespace PhotoContests.App.Controllers
         {
         }
 
-        [AllowAnonymous]
         // GET: Comment
         public ActionResult Index()
         {
@@ -36,6 +35,7 @@ namespace PhotoContests.App.Controllers
             return Json(commentsModel, JsonRequestBehavior.AllowGet);
         }
 
+        [AjaxAuthorize]
         [HttpPost]
         public ActionResult Create(CommentViewModel commentViewModel)
         {

@@ -13,6 +13,7 @@
             @using (Ajax.BeginForm("Create", "Comments", new AjaxOptions
             {
                 HttpMethod = "POST",
+                OnFailure = "AjaxOnFailure",
                 OnSuccess = "AjaxClearForm"
             }))
             {
