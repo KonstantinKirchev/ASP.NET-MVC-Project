@@ -233,6 +233,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\CommentsHub.cs" />
+    <Compile Include="Hubs\VoteHub.cs" />
     <Compile Include="Models\BindingModels\ContestBindingModel.cs" />
     <Compile Include="Models\BindingModels\ContestFinalBindingModel.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />

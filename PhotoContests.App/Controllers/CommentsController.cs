@@ -28,7 +28,7 @@ namespace PhotoContests.App.Controllers
         // GET: Comment
         public ActionResult Index()
         {
-            var comments = this.Data.Comments.All().ToList();
+            var comments = this.Data.Comments.All().OrderByDescending(c => c.Id).ToList();
 
             var commentsModel = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentViewModel>>(comments);
 

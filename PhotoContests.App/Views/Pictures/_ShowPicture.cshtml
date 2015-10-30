@@ -3,13 +3,14 @@
 <div class="col-md-4 picture" data-id="@(Model.Id)">
     <div class="thumbnail">
         <a href="@Model.PictureUrl" alt="" class="img-responsive" data-lightbox="image-1" data-title="@Model.Owner">
-            <img src="@Model.PictureUrl" alt="" />
+            <img src="@Model.PictureUrl" alt=""/>
         </a>
         <div class="caption">
             <h3>Picture Title to be implemented</h3>
             <p>Picture Description to be implemented</p>
             <p>
-                <a href="#" class="btn btn-primary" role="button">Vote <span class="badge">@Model.VoteCount</span></a>
+                @*<a href="#" class="btn btn-primary" role="button">Vote <span class="badge">@Model.VoteCount</span></a>*@
+                <button id="@Model.Id" class="btn btn-primary">Vote <span data-itemid="@Model.Id">@Model.VoteCount</span></button>
                 <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-target="#commentsCollapse@(Model.Id)">Comments <span class="badge ng-binding commentsCount">@Model.CommentsCount</span></button>
             </p>
             <div class="collapse" id="commentsCollapse@(Model.Id)">
