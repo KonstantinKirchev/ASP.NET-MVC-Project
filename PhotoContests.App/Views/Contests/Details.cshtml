@@ -140,9 +140,9 @@
                 pictureElement.find(".commentPictureId").val(pictureId);
             });
 
-            var tweetsHub = $.connection.comments;
+            var commentsHub = $.connection.comments;
 
-            tweetsHub.client.receiveComment = function(data) {
+            commentsHub.client.receiveComment = function(data) {
                 var id = data.Id;
                 var author = data.Author;
                 var content = data.Content;
@@ -166,6 +166,29 @@
                 pictureContainer.find(".commentsCount").text(parseInt(oldCommentsCount) + 1);
             }
 
+            var voteHub = $.connection.voteHub;
+
+            voteHub.client.updateVoteResults = function (id, pictureViewModel) {
+                var voteFor = $("span[data-itemid='" + id + "']");
+
+                if (pictureViewModel == null) {
+                    drawPopover(voteFor.selector, "Please login first!", "Cannot vote!");
+                    
+                    return;
+                }
+
+                if (parseInt(voteFor.text()) === pictureViewModel.VoteCount) {
+                    drawPopover(voteFor.selector, "You have already voted for this picture!", "Cannot vote!");
+
+                    return;
+                }
+                voteFor.text(pictureViewModel.VoteCount);
+            }
+
+            $("button").click(function () {
+                voteHub.server.vote(this.id);
+            });
+
             $.connection.hub.start();
         });
 
@@ -180,29 +203,20 @@
                 form.append($("<p>").addClass("alert-danger").text("Please login first!"));
             }
         }
-    </script>
-    <script>
-        $(function () {
-            var voteHub = $.connection.voteHub;
-    
-            $.connection.hub.start().done(function () {
-                $("button").click(function () {
-                    voteHub.server.vote(this.id);
-                });
+
+        function drawPopover(selector, content, title) {
+            var element = $(selector);
+            element.parent().popover({
+                html: true,
+                content: function () {
+                    return $("<div>").text(content);
+                },
+                title: title,
+                trigger: 'focus',
+                delay: { "show": 200, "hide": 200 }
             });
-
-            voteHub.client.updateVoteResults = function (id, vote) {
-                var voteFor = $("span[data-itemid='" + vote.Id + "']");
-                voteFor[0].textContent = vote.Votes;
-            }
-
-            voteHub.client.joinVoting = function (votes) {     
-                for (i = 0; i <= votes.length - 1; i++) {
-                    var voteFor = $("span[data-itemid='" + votes[i].Id + "']");
-                    voteFor[0].textContent = votes[i].Votes;
-                }
-            }
-        });
+            element.parent().focus();
+        }
     </script>
 }
 
