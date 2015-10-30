@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Collections.Specialized;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using PhotoContests.App.Models.ViewModels;
 
@@ -18,14 +19,23 @@ namespace PhotoContests.App.Hubs
         private static PhotoContestsDbContext db = new PhotoContestsDbContext();
         private static IHubContext hubVoteContext = GlobalHost.ConnectionManager.GetHubContext<VoteHub>();
 
-        public void Vote(int id)
+        public void Vote(int id, int oldVoteCount, string connectionId)
         {
+            string name = Context.User.Identity.Name;
+
             // AddVote tabulates the vote         
             var pictureViewModel = AddVote(id);
 
             // Clients.All.updateVoteResults notifies all clients that someone has voted and the page updates itself to relect that
+            if (pictureViewModel == null || 
+                pictureViewModel.VoteCount == oldVoteCount)
+            {
+                hubVoteContext.Clients.Group(connectionId).updateVoteResults(id, pictureViewModel);
+                return;
+            }
+
+            //hubVoteContext.Clients.Group(connectionId).updateVoteResults(id, pictureViewModel);
             hubVoteContext.Clients.All.updateVoteResults(id, pictureViewModel);
-            //Clients.All.updateVoteResults(id, votes);
         }
         private PictureViewModel AddVote(int id)
         {
@@ -49,6 +59,13 @@ namespace PhotoContests.App.Hubs
             db.SaveChanges();
 
             return Mapper.Map<Picture, PictureViewModel>(item);
+        }
+
+        public override Task OnConnected()
+        {
+            Groups.Add(Context.ConnectionId, Context.ConnectionId);
+
+            return base.OnConnected();
         }
     }
 }

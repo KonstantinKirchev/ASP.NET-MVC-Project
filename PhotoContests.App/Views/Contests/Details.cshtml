@@ -185,11 +185,17 @@
                 voteFor.text(pictureViewModel.VoteCount);
             }
 
-            $("button").click(function () {
-                voteHub.server.vote(this.id);
-            });
+            voteHub.client.test = function(test) {
+                console.log(test);
+            }
 
-            $.connection.hub.start();
+            $.connection.hub.start()
+                .done(function() {
+                    $("button").click(function () {
+                        var oldVoteCount = $(this).find('span').text();
+                        voteHub.server.vote(this.id, parseInt(oldVoteCount), $.connection.hub.id);
+                    });
+                });
         });
 
         function AjaxClearForm() {
