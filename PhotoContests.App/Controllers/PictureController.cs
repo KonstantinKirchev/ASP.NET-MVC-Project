@@ -139,7 +139,14 @@ namespace PhotoContests.App.Controllers
         {
             using (var filestream = new FileStream(Server.MapPath("~/client_secret.json"), FileMode.Open, FileAccess.Read))
             {
-                return Json(filestream, JsonRequestBehavior.AllowGet);
+                if (filestream.CanRead)
+                {
+                    return Content("ok");
+                }
+                else
+                {
+                    return Content("not ok");
+                }
             }
         }
     }
