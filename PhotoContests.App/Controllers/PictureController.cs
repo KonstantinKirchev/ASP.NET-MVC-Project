@@ -149,5 +149,10 @@ namespace PhotoContests.App.Controllers
                 }
             }
         }
+
+        public ActionResult DisplayError(object err)
+        {
+            return Json(err, JsonRequestBehavior.AllowGet);
+        }
     }
 }
