@@ -53,7 +53,7 @@ else if (!User.Identity.IsAuthenticated)
     @Html.ActionLink("Back to List", "Index", "Home")
 </p>
 
-
+<div id="GeneralSection"></div>
 
 
 @section scripts{
@@ -211,8 +211,7 @@ else if (!User.Identity.IsAuthenticated)
                 },
                 error: function (error) {
                     alert('Not');
-                    //$('#GeneralSection').html(error.responseText);
-                    console.log(error);
+                    $('#GeneralSection').html(error.responseText);
                 }
             });
         }
