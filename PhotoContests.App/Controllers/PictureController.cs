@@ -77,14 +77,14 @@ namespace PhotoContests.App.Controllers
                 byte[] data = target.ToArray();
 
                 UserCredential credential;
-                using (var filestream = new FileStream(Server.MapPath("..//client_secret.json"), FileMode.Open, FileAccess.Read))
+                using (var filestream = new FileStream(Server.MapPath("~//client_secret.json"), FileMode.Open, FileAccess.Read))
                 {
                     credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                         GoogleClientSecrets.Load(filestream).Secrets,
                         new[] { DriveService.Scope.Drive },
                         "yunay07abv.bg",
                         CancellationToken.None,
-                        new FileDataStore(Server.MapPath("/Contests"))).Result;
+                        new FileDataStore(Server.MapPath("~//Contests"))).Result;
                 }
 
                 // Create the service.
