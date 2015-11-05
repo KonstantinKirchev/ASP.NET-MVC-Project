@@ -1,0 +1,70 @@
+﻿@using Kendo.Mvc.UI
+@using PhotoContests.App.Areas.Admin.Models.ViewModels
+<script src="~/Scripts/jquery-2.1.4.js"></script>
+<script src="~/Scripts/lightbox.js"></script>
+
+@(Html.Kendo().Grid<ContestViewModel>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.Id).Width(30);
+            columns.Bound(c => c.Title);
+            columns.Bound(c => c.Description);
+            columns.Bound(c => c.DateCreated).Format("{0:dd.MM.yyyy}");
+            columns.Bound(c => c.DateEnded).Format("{0:dd.MM.yyyy}");
+            columns.Command(command => { command.Edit(); command.Destroy(); });
+        })
+        .Editable(editable =>
+        {
+            editable.Mode(GridEditMode.PopUp);
+            editable.Window(x => x.Title("Contests"));
+            editable.DisplayDeleteConfirmation("Are u sure?");
+        })
+        .Pageable()
+        .ClientDetailTemplateId("contestsview")
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(6)
+            .Model(m => { m.Id(s => s.Id);
+                            m.Field(s => s.Id).Editable(false);
+            })
+            .Read(read => read.Action("Read", "Contest"))
+            .Create(update => update.Action("Create", "Contest"))
+            .Update(update => update.Action("Update", "Contest"))
+            .Destroy(update => update.Action("Delete", "Contest"))
+        )
+        .Events(events => events.DataBound("dataBound"))
+)
+
+<script id="contestsview" type="text/kendo-tmpl">
+    @(Html.Kendo().Grid<PictureViewModel>()
+            .Name("grid_#=Id#") // template expression, to be evaluated in the master context
+            .NoRecords("<h3>The contest is empty</h3>")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.Id).Width(30);
+                columns.Bound(p => p.PictureUrl).ClientTemplate("<a data-lightbox='image-1' href='\\#=data.PictureUrl\\#'><img class='img-rounded' width='100px' src='\\#=data.PictureUrl\\#' /></a>").Width(120);
+                columns.Bound(p => p.Title);
+                columns.Bound(p => p.Description);
+                columns.Bound(p => p.Vote);
+                columns.Command(command => { command.Edit(); command.Destroy(); });
+            })
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .PageSize(4)
+                        .Model(m => { m.Id(s => s.Id);
+                                        m.Field(a => a.Vote).Editable(false);
+                        })
+                .Read(read => read.Action("ReadPictures", "Contest", new { Id = "#=Id#" }))
+                .Update(update => update.Action("UpdatePicture", "Contest"))
+                .Destroy(delete => delete.Action("DeletePicture", "Contest"))
+            )
+            .Pageable()
+            .ToClientTemplate()
+    )
+</script>
+<script>
+    function dataBound() {
+        this.expandRow(this.tbody.find("tr.k-master-row").first());
+    }
+</script>

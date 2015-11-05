@@ -1,0 +1,82 @@
+﻿@model PhotoContests.Models.Contest
+
+@{
+    ViewBag.Title = "Dismiss";
+}
+
+<h2>Finalize</h2>
+
+<h3>Are you sure you want to finalize this contest?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RewardStrategy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RewardStrategy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VotingStrategy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VotingStrategy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticipationStrategy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticipationStrategy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeadlineStrategy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeadlineStrategy)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Finalize" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

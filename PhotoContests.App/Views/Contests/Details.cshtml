@@ -1,0 +1,222 @@
+﻿@model PhotoContests.App.Models.ViewModels.ContestDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Title</h2>
+
+<p id="upload-error" class="bg-danger"></p>
+
+
+@if (User.Identity.IsAuthenticated && (Model.DateEnded == null || Model.DateEnded > DateTime.Now))
+{
+    <button style="margin-bottom: 15px;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#upload-img-form" aria-expanded="false" aria-controls="upload-img-form">
+        <span class="glyphicon glyphicon-open-file"></span>Upload picture
+    </button>
+    <div id="upload-img-form" class="collapse" aria-expanded="false">
+        <form action="" class="form-inline" method="post" enctype="multipart/form-data" style="margin: 5px 0 5px 20px;">
+            <input type="hidden" name="contestId" value="@Model.Id"/>
+            <input class="form-control" type="text" name="title" value="" placeholder="Title..."/>
+            <input class="form-control" type="text" name="description" value="" placeholder="Description..."/>
+            <span class="btn btn-default btn-file">
+                Choose file: <input type="file" id="myFile" name="picture" value="Upload" />
+            </span>
+            <input type="button" onclick="SubmitButtonOnclick();" class="btn bg-primary" name="name" value="Upload"/>
+            <span id="upload-img-err"></span>
+        </form>
+    </div>
+}
+else if (!User.Identity.IsAuthenticated)
+{
+    <p class="alert-info" style="padding: 10px;">Only logged in users can upload images. Log in <a href="/account/login">here!</a></p>
+}
+
+<div id="contest-images">
+    @Html.Partial("~/Views/Pictures/_ShowPictures.cshtml", Model.Pictures)
+</div>
+<div class="clearfix"></div>
+
+@if (Model.DateEnded < DateTime.Now)
+{
+    @Html.DisplayFor(x => x.Winners)
+}
+<p>
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+            @:|
+        }
+
+    }
+    @Html.ActionLink("Back to List", "Index", "Home")
+</p>
+
+
+
+
+@section scripts{
+    @* script for SignalR's comment functionality*@
+    <script src="/signalr/hubs"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
+    <script>
+        signarSys();
+
+        function signarSys() {
+            $(".picture").each(function() {
+                var pictureElement = $(this);
+                var pictureId = pictureElement.data("id");
+
+                pictureElement.find(".commentPictureId").val(pictureId);
+            });
+
+            var commentsHub = $.connection.comments;
+
+            commentsHub.client.receiveComment = function(data) {
+                var id = data.Id;
+                var author = data.Author;
+                var content = data.Content;
+                var pictureId = data.PictureId;
+                var createdAt = data.CreatedAt;
+                var datePattern = "dd.MM.yyyy HH:mm:ss";
+
+                var pictureContainer = $(".picture[data-id=\"" + pictureId + "\"]");
+
+                var commentContainer = $("<div>").addClass("list-group comment");
+
+                var commentInner = $("<div>").addClass("list-group-item")
+                    .append($("<p>").text("[By: " + author + "] [" + $.format.date(createdAt, datePattern) + "]"))
+                    .append($("<blockquote>").text(content));
+
+                commentContainer.append(commentInner).hide();
+
+                pictureContainer.find(".comments").prepend(commentContainer);
+                commentContainer.show("slow");
+                var oldCommentsCount = pictureContainer.find(".commentsCount").text();
+                pictureContainer.find(".commentsCount").text(parseInt(oldCommentsCount) + 1);
+            }
+
+            var voteHub = $.connection.voteHub;
+
+            voteHub.client.updateVoteResults = function(id, pictureViewModel) {
+                var voteFor = $("span[data-itemid='" + id + "']");
+
+                if (pictureViewModel == null) {
+                    drawPopover(voteFor.selector, "Please login first!", "Cannot vote!");
+
+                    return;
+                }
+
+                if (parseInt(voteFor.text()) === pictureViewModel.VoteCount) {
+                    drawPopover(voteFor.selector, "You have already voted for this picture!", "Cannot vote!");
+
+                    return;
+                }
+
+                voteFor.text(pictureViewModel.VoteCount);
+            }
+
+            voteHub.client.test = function(test) {
+                console.log(test);
+            }
+
+            $.connection.hub.start()
+                .done(function() {
+                    $("button").click(function() {
+                        var oldVoteCount = $(this).find('span').text();
+                        voteHub.server.vote(this.id, parseInt(oldVoteCount), $.connection.hub.id);
+                    });
+                });
+        };
+
+        function AjaxClearForm() {
+            var form = $(this);
+            form.find("textarea").val("");
+        }
+
+        function AjaxOnFailure(data) {
+            if (data.status === 403) {
+                var form = $(this);
+                form.append($("<p>").addClass("alert-danger").text("Please login first!"));
+            }
+        }
+
+        function drawPopover(selector, content, title) {
+            var element = $(selector);
+            element.parent().popover({
+                html: true,
+                content: function() {
+                    return $("<div>").text(content);
+                },
+                title: title,
+                trigger: 'focus',
+                delay: { "show": 200, "hide": 200 }
+            });
+            element.parent().focus();
+        }
+    </script>
+
+<script>
+    function SubmitButtonOnclick() {
+        var id = $("input[name='contestId']").val();
+        var title = $("input[name='title']").val();
+        var description = $("input[name='description']").val();
+        var file = document.getElementById('myFile').files[0];
+
+        if (file == null) {
+            $("#upload-img-err").html("Please, choose some img").css("color", "red");
+        } else {
+            var fileExtension = file.name.split('.');
+            fileExtension = fileExtension[fileExtension.length - 1].toLowerCase();
+            if (fileExtension != "jpeg" && fileExtension != "jpg") {
+                $("#upload-img-err").html("The image must be jpeg").css("color", "red");;
+                return false;
+            }
+
+            var data = new FormData();
+            data.append('contestId', id);
+            data.append('picture', file);
+            data.append('title', title);
+            data.append('description', description);
+            $.ajax({
+                type: "POST",
+                url: '/Picture/UploadPicture',
+                contentType: false,
+                processData: false,
+                data: data,
+                beforeSend: function () {
+                    $("#contest-images").prepend("<div id=\"loading-element\"><div class=\"col-md-4\"><div class=\"thumbnail\"><img style=\"height:200px\" src=\"/Images/loadingImg.gif\" alt=\"\" class=\"img-responsive\">" +
+                        "<div class=\"caption\"><h3>Loading title...</h3><p>Loading description...</p><p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">Vote <span class=\"badge\"></span></a>" +
+                        "<button class=\"btn btn-default collapsed\" role=\"button\" data-toggle=\"collapse\" data-target=\"#commentsCollapse\">Comments <span class=\"badge ng-binding\"></span></button>" +
+                        "</p><div class=\"collapse\" id=\"commentsCollapse\"></div></div></div></div></div>");
+                },
+                success: function (response) {
+
+                    if (response == "Not") {
+                        $("#upload-error").html("You don't have permission to participate in this contest!");
+                        $("#contest-images").children().first().remove();
+                    }
+                    else if(response == "Max"){
+                        $("#upload-error").html("The number of max participants is reached. Sorry :(");
+                        $("#contest-images").children().first().remove();
+                    }
+                    else {
+                        $("#loading-element").remove();
+                        $("#contest-images").prepend(response).fadeIn('slow');
+                        $(".form-inline")[0].reset();
+                        signarSys();
+                    } 
+
+                },
+                error: function (error) {
+                    alert('Not');
+                    //$('#GeneralSection').html(error.responseText);
+                }
+            });
+        }
+
+    }
+</script>
+}
+

@@ -1,0 +1,26 @@
+﻿@using PhotoContests.App.Models
+@model PhotoContests.App.Models.ViewModels.PictureViewModel
+
+<div class="col-md-4 picture" data-id="@(Model.Id)">
+    <div class="thumbnail">
+        <a  href="@Model.PictureUrl" alt="" class="img-responsive img-wrapper" data-lightbox="image-1" data-title="@Model.Owner">
+            <img src="@Model.PictureUrl" alt="@Model.Title" />
+        </a>
+        <div class="caption">
+            <h3 style="overflow: hidden">@((Model.Title ?? "Title is missing...").TruncateWord(25))</h3>
+            <p style="overflow: hidden">@((Model.Description ?? "Description is missing...").TruncateWord(65))</p>
+            <p>
+                @*<a href="#" class="btn btn-primary" role="button">Vote <span class="badge">@Model.VoteCount</span></a>*@
+                @if (Model.ContestDateEnded > DateTime.Now || Model.ContestDateEnded == null)
+                {
+                    <button id="@Model.Id" class="btn btn-primary">Vote <span data-itemid="@Model.Id">@Model.VoteCount</span></button>
+                }
+
+                <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-target="#commentsCollapse@(Model.Id)">Comments <span class="badge ng-binding commentsCount">@Model.CommentsCount</span></button>
+            </p>             
+            <div class="collapse" id="commentsCollapse@(Model.Id)">
+                @Html.Partial("~/Views/Comments/_ShowComments.cshtml", Model.Comments)
+            </div>
+        </div>
+    </div>
+</div>
