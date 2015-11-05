@@ -212,6 +212,7 @@ else if (!User.Identity.IsAuthenticated)
                 error: function (error) {
                     alert('Not');
                     //$('#GeneralSection').html(error.responseText);
+                    console.log(error);
                 }
             });
         }
