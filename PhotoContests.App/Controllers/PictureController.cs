@@ -134,5 +134,13 @@ namespace PhotoContests.App.Controllers
 
             return View("/");
         }
+
+        public ActionResult Test()
+        {
+            using (var filestream = new FileStream(Server.MapPath("~/client_secret.json"), FileMode.Open, FileAccess.Read))
+            {
+                return Json(filestream, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }
