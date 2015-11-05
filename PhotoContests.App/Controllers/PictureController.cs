@@ -77,7 +77,7 @@ namespace PhotoContests.App.Controllers
                 byte[] data = target.ToArray();
 
                 UserCredential credential;
-                using (var filestream = new FileStream(Server.MapPath("../client_secret.json"), FileMode.Open, FileAccess.Read))
+                using (var filestream = new FileStream(Server.MapPath("..//client_secret.json"), FileMode.Open, FileAccess.Read))
                 {
                     credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                         GoogleClientSecrets.Load(filestream).Secrets,
