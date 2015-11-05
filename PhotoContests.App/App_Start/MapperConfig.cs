@@ -22,12 +22,16 @@ namespace PhotoContests.App.App_Start
                     config =>
                         config.MapFrom(
                             contest =>
+<<<<<<< HEAD
                                 Mapper.Map<ICollection<Picture>, ICollection<PictureViewModel>>(contest.ContestPictures)))
                 .ForMember(model => model.Winners,
                     config =>
                         config.MapFrom(
                             contest =>
                                 Mapper.Map<ICollection<Prize>, ICollection<WinnerPrizeViewModel>>(contest.Prizes)));
+=======
+                                Mapper.Map<ICollection<Picture>, ICollection<PictureViewModel>>(contest.ContestPictures)));
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 
             Mapper.CreateMap<Comment, CommentViewModel>()
                 .ForMember(model => model.Author, config => config.MapFrom(comment => comment.Author.UserName));

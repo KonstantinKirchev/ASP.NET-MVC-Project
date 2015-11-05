@@ -21,8 +21,11 @@ namespace PhotoContests.Data
 
         public virtual IDbSet<Comment> Comments { get; set; }
 
+<<<<<<< HEAD
         public virtual IDbSet<Notification> Notifications { get; set; } 
 
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         public static PhotoContestsDbContext Create()
         {
             return new PhotoContestsDbContext();
@@ -31,7 +34,11 @@ namespace PhotoContests.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+<<<<<<< HEAD
             //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+=======
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 
             modelBuilder.Entity<Contest>()
                 .HasMany(c => c.PostedPictureOwners)
@@ -81,6 +88,7 @@ namespace PhotoContests.Data
                     u.ToTable("VotersPictures");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity<User>()
                 .HasMany(t => t.ContestPrizes)
                 .WithOptional(m => m.Owner);
@@ -89,6 +97,8 @@ namespace PhotoContests.Data
                 .HasMany(t => t.WinPrizes)
                 .WithOptional(m => m.Winner);
 
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
             base.OnModelCreating(modelBuilder);
         }
     }

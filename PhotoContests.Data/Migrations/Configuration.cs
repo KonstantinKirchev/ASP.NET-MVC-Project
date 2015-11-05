@@ -6,7 +6,11 @@ namespace PhotoContests.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
+<<<<<<< HEAD
     using Models;
+=======
+    using PhotoContests.Models;
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 
     public sealed class Configuration : DbMigrationsConfiguration<PhotoContestsDbContext>
     {

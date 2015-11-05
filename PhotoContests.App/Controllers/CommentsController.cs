@@ -37,7 +37,10 @@ namespace PhotoContests.App.Controllers
 
         [AjaxAuthorize]
         [HttpPost]
+<<<<<<< HEAD
         [ValidateInput(false)]
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         public ActionResult Create(CommentViewModel commentViewModel)
         {
             var comment = new Comment()

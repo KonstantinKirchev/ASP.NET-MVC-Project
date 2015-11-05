@@ -24,10 +24,13 @@ namespace PhotoContests.Models
 
         public int ContestId { get; set; }
 
+<<<<<<< HEAD
         public string Title { get; set; }
 
         public string Description { get; set; }
 
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         public virtual Contest Contest { get; set; }
 
         [Required]

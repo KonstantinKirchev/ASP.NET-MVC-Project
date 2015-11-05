@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@model PhotoContests.App.Models.ViewModels.ContestDetailViewModel
 
 @{
@@ -220,3 +221,244 @@ else if (!User.Identity.IsAuthenticated)
 </script>
 }
 
+=======
+﻿@model PhotoContests.App.Models.ViewModels.ContestDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Title</h2>
+
+@Html.Partial("~/Views/Pictures/_ShowPictures.cshtml", Model.Pictures)
+
+@section scripts{
+    @*<script>
+        $(".alert").addClass("in").fadeOut(3500);
+        // starrr plugin (https://github.com/dobtco/starrr)
+        var __slice = [].slice;
+
+        (function($, window) {
+            var Starrr;
+
+            Starrr = (function() {
+                Starrr.prototype.defaults = {
+                    rating: void 0,
+                    numStars: 5,
+                    change: function(e, value) {}
+                };
+
+                function Starrr($el, options) {
+                    var i,
+                        _,
+                        _ref,
+                        _this = this;
+
+                    this.options = $.extend({}, this.defaults, options);
+                    this.$el = $el;
+                    _ref = this.defaults;
+                    for (i in _ref) {
+                        _ = _ref[i];
+                        if (this.$el.data(i) != null) {
+                            this.options[i] = this.$el.data(i);
+                        }
+                    }
+                    this.createStars();
+                    this.syncRating();
+                    this.$el.on('mouseover.starrr', 'span', function(e) {
+                        return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
+                    });
+                    this.$el.on('mouseout.starrr', function() {
+                        return _this.syncRating();
+                    });
+                    this.$el.on('click.starrr', 'span', function(e) {
+                        return _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
+                    });
+                    this.$el.on('starrr:change', this.options.change);
+                }
+
+                Starrr.prototype.createStars = function() {
+                    var _i, _ref, _results;
+
+                    _results = [];
+                    for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
+                        _results.push(this.$el.append("<span class='glyphicon .glyphicon-star-empty'></span>"));
+                    }
+                    return _results;
+                };
+
+                Starrr.prototype.setRating = function(rating) {
+                    if (this.options.rating === rating) {
+                        rating = void 0;
+                    }
+                    this.options.rating = rating;
+                    this.syncRating();
+                    return this.$el.trigger('starrr:change', rating);
+                };
+
+                Starrr.prototype.syncRating = function(rating) {
+                    var i, _i, _j, _ref;
+
+                    rating || (rating = this.options.rating);
+                    if (rating) {
+                        for (i = _i = 0, _ref = rating - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+                            this.$el.find('span').eq(i).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+                        }
+                    }
+                    if (rating && rating < 5) {
+                        for (i = _j = rating; rating <= 4 ? _j <= 4 : _j >= 4; i = rating <= 4 ? ++_j : --_j) {
+                            this.$el.find('span').eq(i).removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+                        }
+                    }
+                    if (!rating) {
+                        return this.$el.find('span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+                    }
+                };
+
+                return Starrr;
+
+            })();
+            return $.fn.extend({
+                starrr: function() {
+                    var args, option;
+
+                    option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+                    return this.each(function() {
+                        var data;
+
+                        data = $(this).data('star-rating');
+                        if (!data) {
+                            $(this).data('star-rating', (data = new Starrr($(this), option)));
+                        }
+                        if (typeof option === 'string') {
+                            return data[option].apply(data, args);
+                        }
+                    });
+                }
+            });
+        })(window.jQuery, window);
+
+        $(function() {
+            return $(".starrr").starrr();
+        });
+
+        $(document).ready(function() {
+
+            $('#stars').on('starrr:change', function(e, value) {
+                $('#count').html(value);
+                $('.alert').removeClass('hide').show().delay(1000).addClass("in").fadeOut(3500);
+            });
+
+        });
+    </script>*@
+
+    @* script for SignalR's comment functionality*@
+    <script src="/signalr/hubs"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".picture").each(function(index) {
+                var pictureElement = $(this);
+                var pictureId = pictureElement.data("id");
+
+                pictureElement.find(".commentPictureId").val(pictureId);
+            });
+
+            var commentsHub = $.connection.comments;
+
+            commentsHub.client.receiveComment = function(data) {
+                var id = data.Id;
+                var author = data.Author;
+                var content = data.Content;
+                var pictureId = data.PictureId;
+                var createdAt = data.CreatedAt;
+                var datePattern = "dd.MM.yyyy HH:mm:ss";
+
+                var pictureContainer = $(".picture[data-id=\"" + pictureId + "\"]");
+
+                var commentContainer = $("<div>").addClass("list-group comment");
+
+                var commentInner = $("<div>").addClass("list-group-item")
+                    .append($("<p>").text("[By: " + author + "] [" + $.format.date(createdAt, datePattern) + "]"))
+                    .append($("<blockquote>").text(content));
+
+                commentContainer.append(commentInner).hide();
+
+                pictureContainer.find(".comments").prepend(commentContainer);
+                commentContainer.show("slow");
+                var oldCommentsCount = pictureContainer.find(".commentsCount").text();
+                pictureContainer.find(".commentsCount").text(parseInt(oldCommentsCount) + 1);
+            }
+
+            var voteHub = $.connection.voteHub;
+
+            voteHub.client.updateVoteResults = function (id, pictureViewModel) {
+                var voteFor = $("span[data-itemid='" + id + "']");
+
+                if (pictureViewModel == null) {
+                    drawPopover(voteFor.selector, "Please login first!", "Cannot vote!");
+                    
+                    return;
+                }
+
+                if (parseInt(voteFor.text()) === pictureViewModel.VoteCount) {
+                    drawPopover(voteFor.selector, "You have already voted for this picture!", "Cannot vote!");
+
+                    return;
+                }
+                voteFor.text(pictureViewModel.VoteCount);
+            }
+
+            voteHub.client.test = function(test) {
+                console.log(test);
+            }
+
+            $.connection.hub.start()
+                .done(function() {
+                    $("button").click(function () {
+                        var oldVoteCount = $(this).find('span').text();
+                        voteHub.server.vote(this.id, parseInt(oldVoteCount), $.connection.hub.id);
+                    });
+                });
+        });
+
+        function AjaxClearForm() {
+            var form = $(this);
+            form.find("textarea").val("");
+        }
+
+        function AjaxOnFailure(data) {
+            if (data.status === 403) {
+                var form = $(this);
+                form.append($("<p>").addClass("alert-danger").text("Please login first!"));
+            }
+        }
+
+        function drawPopover(selector, content, title) {
+            var element = $(selector);
+            element.parent().popover({
+                html: true,
+                content: function () {
+                    return $("<div>").text(content);
+                },
+                title: title,
+                trigger: 'focus',
+                delay: { "show": 200, "hide": 200 }
+            });
+            element.parent().focus();
+        }
+    </script>
+}
+
+<p>
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+            @:|
+        }
+        
+    }
+    @Html.ActionLink("Back to List", "Index", "Home")
+</p>
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3

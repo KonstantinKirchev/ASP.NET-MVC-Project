@@ -1,7 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+<<<<<<< HEAD
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
+=======
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoContests.Models", "PhotoContests.Models\PhotoContests.Models.csproj", "{C2F07619-617E-41B1-8259-D5ADB8A16678}"
 EndProject
@@ -9,6 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoContests.Data", "Photo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoContests.App", "PhotoContests.App\PhotoContests.App.csproj", "{F104AE81-A7E4-4458-826D-44885CB346CB}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoContests.Common", "PhotoContests.Common\PhotoContests.Common.csproj", "{3361FE6F-E951-4A88-9548-7A63629E60EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External Libraries", "External Libraries", "{6B27997D-BD4B-450A-80D7-96EAB064C696}"
@@ -19,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External Libraries", "Exter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoContests.Tests", "PhotoContests.Tests\PhotoContests.Tests.csproj", "{779AC28D-1A31-480A-BB4C-32336B7FAAA1}"
 EndProject
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +45,7 @@ Global
 		{F104AE81-A7E4-4458-826D-44885CB346CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F104AE81-A7E4-4458-826D-44885CB346CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F104AE81-A7E4-4458-826D-44885CB346CB}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{3361FE6F-E951-4A88-9548-7A63629E60EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3361FE6F-E951-4A88-9548-7A63629E60EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3361FE6F-E951-4A88-9548-7A63629E60EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +54,8 @@ Global
 		{779AC28D-1A31-480A-BB4C-32336B7FAAA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{779AC28D-1A31-480A-BB4C-32336B7FAAA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{779AC28D-1A31-480A-BB4C-32336B7FAAA1}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -30,7 +30,11 @@ namespace PhotoContests.App.Controllers
             var userId = User.Identity.GetUserId();
             var contests = this.Data.Contests.All()
                 .OrderByDescending(c => c.DateCreated)
+<<<<<<< HEAD
                 .Where(c => (c.DateEnded > DateTime.Now || c.DateEnded == null) && c.ContestOwner.Id == userId);
+=======
+                .Where(c => c.IsClosed == false && c.ContestOwner.Id == userId);
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 
             var contestModels = Mapper.Map<IEnumerable<Contest>, IEnumerable<ContestViewModel>>(contests);
             return View(contestModels);
@@ -42,7 +46,11 @@ namespace PhotoContests.App.Controllers
             var userId = User.Identity.GetUserId();
             var contests = this.Data.Contests.All()
                 .OrderByDescending(c => c.DateCreated)
+<<<<<<< HEAD
                 .Where(c => c.DateEnded < DateTime.Now && c.ContestOwner.Id == userId);
+=======
+                .Where(c => c.IsClosed == true && c.ContestOwner.Id == userId);
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 
             var contestModels = Mapper.Map<IEnumerable<Contest>, IEnumerable<ContestViewModel>>(contests);
             return View(contestModels);
@@ -53,7 +61,11 @@ namespace PhotoContests.App.Controllers
         {
             var contests = this.Data.Contests.All()
                 .OrderByDescending(c => c.DateCreated)
+<<<<<<< HEAD
                 .Where(c => c.DateEnded < DateTime.Now);
+=======
+                .Where(c => c.IsClosed == true);
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 
             var contestModels = Mapper.Map<IEnumerable<Contest>, IEnumerable<ContestViewModel>>(contests);
             return View(contestModels);
@@ -64,11 +76,16 @@ namespace PhotoContests.App.Controllers
         {
             if (id == null)
             {
+<<<<<<< HEAD
                 return RedirectToAction("NotFound","Error");
+=======
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
             }
             var contest = this.Data.Contests.Find(id);
             if (contest == null)
             {
+<<<<<<< HEAD
                 return RedirectToAction("NotFound", "Error");
             }
 
@@ -107,6 +124,12 @@ namespace PhotoContests.App.Controllers
             //}
 
             //contestViewModel.Winners = winners;
+=======
+                return HttpNotFound();
+            }
+
+            var contestViewModel = Mapper.Map<Contest, ContestDetailViewModel>(contest);
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 
             return View(contestViewModel);
         }
@@ -133,6 +156,7 @@ namespace PhotoContests.App.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+<<<<<<< HEAD
             this.LoadPrizes();
             this.LoadUsers();
             return View();
@@ -180,6 +204,23 @@ namespace PhotoContests.App.Controllers
             return this.PartialView("_AddVoterPartialView");
         }
 
+=======
+          
+            var currentUser = User.Identity.GetUserName();
+            var users = this.Data.Users.All()
+                .Where(u => u.UserName != currentUser)
+                .Select(u => new
+                {
+                    Username = u.UserName
+                })
+                .ToList();
+
+            ViewBag.Users = new MultiSelectList(users, "Username");
+
+            return View();
+        }
+        
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         // POST: Contests/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -213,6 +254,7 @@ namespace PhotoContests.App.Controllers
                 };
 
                 this.Data.Contests.Add(contest);
+<<<<<<< HEAD
 
                 if (contest.ParticipationStrategy == ParticipationStrategy.Closed)
                 {
@@ -262,6 +304,12 @@ namespace PhotoContests.App.Controllers
             this.LoadPrizes();
             this.LoadUsers();
 
+=======
+                this.Data.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
             return View();
         }
 
@@ -323,7 +371,10 @@ namespace PhotoContests.App.Controllers
             {
                 return RedirectToAction("Index","Home");
             }
+<<<<<<< HEAD
             
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
  
             return View(contest);
         }
@@ -362,6 +413,7 @@ namespace PhotoContests.App.Controllers
         public ActionResult FinalizeConfirmed(int id)
         {
             var contest = this.Data.Contests.Find(id);
+<<<<<<< HEAD
             var prizes = contest.Prizes.ToList();
 
             var picturesMostVoted = contest.ContestPictures
@@ -378,6 +430,12 @@ namespace PhotoContests.App.Controllers
             contest.DateEnded = DateTime.Now;
             this.Data.SaveChanges();
             return RedirectToAction("Details", new {id = contest.Id});
+=======
+            contest.IsClosed = true;
+            contest.DateEnded = DateTime.Now;
+            this.Data.SaveChanges();
+            return RedirectToAction("Index");
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         }
 
         // GET: Contests/Delete/5

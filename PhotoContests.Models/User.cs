@@ -16,10 +16,15 @@ namespace PhotoContests.Models
         private ICollection<Contest> invitedContests;
         private ICollection<Contest> contestsForParticipation;
         private ICollection<Picture> pictures;
+<<<<<<< HEAD
         private ICollection<Prize> contestPrizes;
         private ICollection<Prize> winPrizes;
         private ICollection<Comment> comments;
         private ICollection<Notification> notifications; 
+=======
+        private ICollection<Prize> prizes;
+        private ICollection<Comment> comments; 
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 
         public User()
         {
@@ -28,10 +33,15 @@ namespace PhotoContests.Models
             this.invitedContests = new HashSet<Contest>();
             this.contestsForParticipation = new HashSet<Contest>();
             this.pictures = new HashSet<Picture>();
+<<<<<<< HEAD
             this.contestPrizes = new HashSet<Prize>();
             this.winPrizes = new HashSet<Prize>();
             this.comments = new HashSet<Comment>();
             this.notifications = new HashSet<Notification>();
+=======
+            this.prizes = new HashSet<Prize>();
+            this.comments = new HashSet<Comment>();
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         }
 
         public string FirstName { get; set; }
@@ -73,6 +83,7 @@ namespace PhotoContests.Models
             set { this.pictures = value; }
         }
 
+<<<<<<< HEAD
         public virtual ICollection<Prize> ContestPrizes
         {
             get { return this.contestPrizes; }
@@ -83,6 +94,12 @@ namespace PhotoContests.Models
         {
             get { return this.winPrizes; }
             set { this.winPrizes = value; }
+=======
+        public virtual ICollection<Prize> Prizes
+        {
+            get { return this.prizes; }
+            set { this.prizes = value; }
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         }
 
         public virtual ICollection<Comment> Comments
@@ -91,12 +108,15 @@ namespace PhotoContests.Models
             set { this.comments = value; }
         }
 
+<<<<<<< HEAD
         public virtual ICollection<Notification> Notifications
         {
             get { return this.notifications; }
             set { this.notifications = value; }
         }
 
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

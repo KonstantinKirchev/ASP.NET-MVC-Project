@@ -54,6 +54,7 @@ namespace PhotoContests.App.Hubs
             {
                 return Mapper.Map<Picture, PictureViewModel>(item);
             }
+<<<<<<< HEAD
 
             if (item.Contest.VotingStrategy == VotingStrategy.Closed)
             {
@@ -63,6 +64,8 @@ namespace PhotoContests.App.Hubs
                 }
             }
 
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
             item.VoteCount++;
             item.Voters.Add(user);
             db.SaveChanges();

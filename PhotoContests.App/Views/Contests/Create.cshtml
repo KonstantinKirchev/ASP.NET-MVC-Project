@@ -14,6 +14,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
+<<<<<<< HEAD
         <div class="info">Please add prizes</div>
         <div id="prizes">
             @Html.Partial("_CreatePrizePartial")
@@ -31,6 +32,23 @@
 @{
     if (this.Session["DeadlineStrategy"].ToString() == DeadlineStrategy.ByTime.ToString())
     {
+=======
+        @{
+            if (this.Session["RewardStrategy"].ToString() == RewardStrategy.TopNUsers.ToString())
+            {
+                <div class="info">Please add winners count</div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WinnersCount, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.WinnersCount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.WinnersCount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            }
+
+            if (this.Session["DeadlineStrategy"].ToString() == DeadlineStrategy.ByTime.ToString())
+            {
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
                 <div class="info">Please add date ended</div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.DateEnded, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -42,7 +60,11 @@
             }
             else
             {
+<<<<<<< HEAD
                 <div class="info">Please add max number of participants</div>
+=======
+                <div class="info">Please add number of participants</div>
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
                 <div class="form-group">
                     @Html.LabelFor(model => model.NumberOfParticipation, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -50,6 +72,7 @@
                         @Html.ValidationMessageFor(model => model.NumberOfParticipation, "", new { @class = "text-danger" })
                     </div>
                 </div>
+<<<<<<< HEAD
             }
 
             if (this.Session["ParticipationStrategy"].ToString() == ParticipationStrategy.Closed.ToString())
@@ -65,11 +88,21 @@
                     UpdateTargetId = "partisipators",
                     InsertionMode = InsertionMode.InsertAfter
                 }, new { @class = "col-md-offset-4" })
+=======
+
+                <div class="info">Please add selected users for participation</div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.ListBox("Username", (MultiSelectList)ViewBag.Users, new { size = 4 })
+                    </div>
+                </div>
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
             }
 
             if (this.Session["VotingStrategy"].ToString() == VotingStrategy.Closed.ToString())
             {
                 <div class="info">Please add selected users for voting</div>
+<<<<<<< HEAD
                 <div id="voters">
                     @Html.Partial("_AddVoterPartialView")
                 </div>
@@ -82,6 +115,15 @@
                 }, new { @class = "col-md-offset-4" })
             }
 }
+=======
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.ListBox("Username", (MultiSelectList)ViewBag.Users, new { size = 4 })
+                    </div>
+                </div>
+            }
+        }
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

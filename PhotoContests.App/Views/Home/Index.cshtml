@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 ﻿@using PagedList.Mvc
 @model PagedList.IPagedList<PhotoContests.App.Models.ViewModels.ContestViewModel>
+=======
+﻿@model System.Collections.Generic.IEnumerable<PhotoContests.App.Models.ViewModels.ContestViewModel>
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 @{
     ViewBag.Title = "Home Page";
 }
 
 <div class="row">
     @Html.DisplayForModel()
+<<<<<<< HEAD
 </div>
 
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+=======
+</div>
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3

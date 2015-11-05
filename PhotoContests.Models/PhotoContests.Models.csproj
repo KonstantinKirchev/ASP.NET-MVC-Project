@@ -57,7 +57,10 @@
     <Compile Include="Comment.cs" />
     <Compile Include="Contest.cs" />
     <Compile Include="DeadlineStrategy.cs" />
+<<<<<<< HEAD
     <Compile Include="Notification.cs" />
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
     <Compile Include="ParticipationStrategy.cs" />
     <Compile Include="Picture.cs" />
     <Compile Include="Prize.cs" />

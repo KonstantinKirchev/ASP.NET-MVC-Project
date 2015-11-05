@@ -5,6 +5,10 @@ namespace PhotoContests.App
 {
     public class BundleConfig
     {
+<<<<<<< HEAD
+=======
+        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -18,6 +22,11 @@ namespace PhotoContests.App
             bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
                         "~/Scripts/jquery.signalR-*"));
 
+<<<<<<< HEAD
+=======
+            // Use the development version of Modernizr to develop with and learn from. Then, when you're
+            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
@@ -29,6 +38,7 @@ namespace PhotoContests.App
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/lightbox.css"));
+<<<<<<< HEAD
 
             bundles.Add(new StyleBundle("~/adminKendo/css").Include(
                       "~/Content/kendo/kendo.common.core.min.css",
@@ -38,6 +48,8 @@ namespace PhotoContests.App
             bundles.Add(new ScriptBundle("~/adminKendo/bootstrap").Include(
                       "~/Scripts/kendo/kendo.all.min.js",
                       "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         }
     }
 }

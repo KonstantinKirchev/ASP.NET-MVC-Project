@@ -22,6 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+<<<<<<< HEAD
 
 .img-wrapper {
     height: 200px;
@@ -82,3 +83,5 @@ a.photo-contest-logo
      height: 60px;
      text-indent: -9999px; /* hides the link text */
 }
+=======
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3

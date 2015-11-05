@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,12 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNet.Identity;
 using PagedList;
+=======
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using AutoMapper;
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
 using PhotoContests.App.Models.ViewModels;
 using PhotoContests.Data.UnitOfWork;
 using PhotoContests.Models;
@@ -24,6 +31,7 @@ namespace PhotoContests.App.Controllers
         {
         }
 
+<<<<<<< HEAD
         public ActionResult Index(int? page)
         {
             var contests = this.Data.Contests.All()
@@ -33,6 +41,16 @@ namespace PhotoContests.App.Controllers
                 .ToPagedList(page ?? 1, 9);
 
             return View(contests);
+=======
+        public ActionResult Index()
+        {
+            var contests = this.Data.Contests.All()
+                .OrderByDescending(c => c.DateCreated)
+                .Where(c => c.IsClosed == false);
+
+            var contestModels = Mapper.Map<IEnumerable<Contest>, IEnumerable<ContestViewModel>>(contests);
+            return View(contestModels);
+>>>>>>> 97745c1ce001803da2d445f4a0a6282637aacca3
         }
     }
 }
