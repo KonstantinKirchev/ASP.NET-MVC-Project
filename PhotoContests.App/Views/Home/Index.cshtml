@@ -1,0 +1,11 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<PhotoContests.App.Models.ViewModels.ContestViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    @Html.DisplayForModel()
+</div>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

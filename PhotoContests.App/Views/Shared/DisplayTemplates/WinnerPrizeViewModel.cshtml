@@ -1,0 +1,8 @@
+﻿@model PhotoContests.App.Models.ViewModels.WinnerPrizeViewModel
+           
+<div class="panel panel-body panel-default">
+    <p>Position: @Model.WinnerPosition</p>
+    <p>Winner: @Model.WinnerUsername</p>
+    <p>Prize: @Model.Name</p>
+    <a href="@Model.PictureUrl" data-lightbox="image-1" data-title="@Model.Name"><img class="img-rounded" width="200" src="@Model.PictureUrl" alt="@Model.Name" /></a>
+</div>

@@ -1,0 +1,43 @@
+﻿@using Kendo.Mvc.UI
+@using PhotoContests.App.Areas.Admin.Models.ViewModels
+
+<style>
+    .single-line {
+        color: #333333;
+    }
+</style>
+
+<h2>Users</h2>
+
+@(Html.Kendo().Grid<UserViewModel>()
+    .Name("UserGrid")
+    .Columns(columns =>
+    {
+        columns.Bound(x => x.FirstName);
+        columns.Bound(x => x.LastName);
+        columns.Bound(x => x.Email);
+        columns.Bound(x => x.PhoneNumber);
+        columns.Command(command => command.Edit().Text("Edit").UpdateText("Save").CancelText("Cancel"));
+        columns.Command(command => command.Destroy().Text("Delete"));
+    })
+    .Pageable()
+    .ToolBar(toolbar =>
+    {
+        toolbar.Create().Text("Create");
+        toolbar.Custom().Text("Home").Action("Index", "HomeAdmin");
+    })
+    .Editable(editable =>
+    {
+        editable.Mode(GridEditMode.PopUp);
+        editable.Window(x => x.Title("Users"));
+        editable.DisplayDeleteConfirmation("Are u sure?");
+    })
+        .DataSource(x=>x.Ajax().ServerOperation(true)
+        .PageSize(10)
+        .Model(m=>m.Id(s=>s.Id))
+        .Read(read=>read.Action("Read","User"))
+        .Create(create=>create.Action("Create","User"))
+        .Update(update => update.Action("Update", "User"))
+        .Destroy(destroy => destroy.Action("Delete", "User"))
+    )
+)

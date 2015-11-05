@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoContests.Models", "PhotoContests.Models\PhotoContests.Models.csproj", "{C2F07619-617E-41B1-8259-D5ADB8A16678}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoContests.Data", "PhotoContests.Data\PhotoContests.Data.csproj", "{8F25ED5A-28E7-4FDB-A0B7-86F9B314CB2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoContests.App", "PhotoContests.App\PhotoContests.App.csproj", "{F104AE81-A7E4-4458-826D-44885CB346CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoContests.Common", "PhotoContests.Common\PhotoContests.Common.csproj", "{3361FE6F-E951-4A88-9548-7A63629E60EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External Libraries", "External Libraries", "{6B27997D-BD4B-450A-80D7-96EAB064C696}"
+	ProjectSection(SolutionItems) = preProject
+		External Libraries\Kendo.Mvc.dll = External Libraries\Kendo.Mvc.dll
+		External Libraries\System.Web.Mvc.Expressions.dll = External Libraries\System.Web.Mvc.Expressions.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoContests.Tests", "PhotoContests.Tests\PhotoContests.Tests.csproj", "{779AC28D-1A31-480A-BB4C-32336B7FAAA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2F07619-617E-41B1-8259-D5ADB8A16678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2F07619-617E-41B1-8259-D5ADB8A16678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2F07619-617E-41B1-8259-D5ADB8A16678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2F07619-617E-41B1-8259-D5ADB8A16678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F25ED5A-28E7-4FDB-A0B7-86F9B314CB2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F25ED5A-28E7-4FDB-A0B7-86F9B314CB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F25ED5A-28E7-4FDB-A0B7-86F9B314CB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F25ED5A-28E7-4FDB-A0B7-86F9B314CB2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F104AE81-A7E4-4458-826D-44885CB346CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F104AE81-A7E4-4458-826D-44885CB346CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F104AE81-A7E4-4458-826D-44885CB346CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F104AE81-A7E4-4458-826D-44885CB346CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3361FE6F-E951-4A88-9548-7A63629E60EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3361FE6F-E951-4A88-9548-7A63629E60EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3361FE6F-E951-4A88-9548-7A63629E60EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3361FE6F-E951-4A88-9548-7A63629E60EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{779AC28D-1A31-480A-BB4C-32336B7FAAA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779AC28D-1A31-480A-BB4C-32336B7FAAA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779AC28D-1A31-480A-BB4C-32336B7FAAA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779AC28D-1A31-480A-BB4C-32336B7FAAA1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

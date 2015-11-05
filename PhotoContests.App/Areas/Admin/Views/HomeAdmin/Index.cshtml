@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Administration";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<a style="margin-right: 10px;" href="/Admin/User" onmouseout="swapImageRestore(this, '1');" onmouseover="swapImage(this, '1');">
+    <img width="100" height="100" src="~/Images/user-blackandwhite.jpg"/>
+</a>
+<a href="/Admin/Contest" onmouseout="swapImageRestore(this, '2');" onmouseover="swapImage(this, '2');">
+    <img width="100" height="100" src="~/Images/contest-blackandwhite.jpg" />
+</a>
+
+<script>
+
+    function swapImage(sender, img) {
+        if (img == '1') {
+            $(sender).children().attr('src', '/Images/user-colored.jpg');
+        } else if (img == '2') {
+            $(sender).children().attr('src', '/Images/contest-colored.jpg');
+        } 
+    }
+
+    function swapImageRestore(sender, img) {
+        if (img == '1') {
+            $(sender).children().attr('src', '/Images/user-blackandwhite.jpg');
+        } else if (img == '2') {
+            $(sender).children().attr('src', '/Images/contest-blackandwhite.jpg');
+        } 
+    }
+
+</script>
